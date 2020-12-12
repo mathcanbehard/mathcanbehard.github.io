@@ -32,7 +32,7 @@ f_X(1/2) = \frac{e^{-\frac{x}{2}}}{2} = \frac{x^{\frac{2}{2}-1}e^{-\frac{x}{2}}}
 $$
 
 where $$f_X$$ is the density function of $$X$$ and on the right side we have the density function of the Gamma distribution with $$k = 2$$.
-In the same way as above, we note that $$2\lambda X_i \sim \text{Exp}(1/2)$$ for each $X_i$. We can also make use of the sum, since the sum of $n$ chi-squared distributions with $k$ degrees of freedom each, is again a chi-squared distribution with $nk$ degrees of freedom. This can be seen by writing each chi-squared distribution as the sum of standard normal random variables, and taking the sum. So we end up with 
+In the same way as above, we note that $$2\lambda X_i \sim \text{Exp}(1/2)$$ for each $X_i$. We can also make use of the sum, since the sum of $n$ chi-squared distributions with $k$ degrees of freedom each, is again a chi-squared distribution with $$nk$$ degrees of freedom. This can be seen by writing each chi-squared distribution as the sum of standard normal random variables, and taking the sum. So we end up with 
 
 $$
 2\lambda X_1 + \ldots + 2\lambda X_n = 2\lambda \sum_{i=1}^n X_i \sim \chi_{2n}^2.
