@@ -3,7 +3,7 @@ layout: post
 title:  "Two confidence intervals for the rate parameter of the Exponential distribution"
 date:   2020-12-12 14:14:14 +0100
 tags: frequentist statistics exponential distribution
-categories: frequentist statistics
+category: frequentist statistics
 math: true
 ---
 
