@@ -4,6 +4,7 @@ title:  "Two confidence intervals for the rate parameter of the Exponential dist
 date:   2020-12-12 14:14:14 +0100
 tags: frequentist statistics exponential distribution
 categories: frequentist statistics
+math: true
 ---
 
 In this post we show two different exact confidence intervals for the rate parameter $$\lambda$$ of exponentially-distributed random variables. One useful, and one less so.
