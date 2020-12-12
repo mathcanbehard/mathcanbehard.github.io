@@ -28,7 +28,7 @@ Now often to create a confidence interval we look at what the distribution is of
 The first confidence interval is the most convenient one as it makes use of the chi-squared distribution, for which cumulative probability tables exist in books and online. Note that if we take $$\lambda = \frac{1}{2}$$ then $$X \sim \chi_2^2$$ which we can see in the following way:
 
 $$ 
-f_X(1/2) = \frac{e^{-\frac{x}{2}}}{2} = \frac{x^{\frac{2}{2}-1}e^{-\frac{x}{2}}}{2^{\frac{2}{2}}\Gamma(\frac{2}{2}}
+f_X(1/2) = \frac{e^{-\frac{x}{2}}}{2} = \frac{x^{\frac{2}{2}-1}e^{-\frac{x}{2}}}{2^{\frac{2}{2}}\Gamma(\frac{2}{2})}
 $$
 
 where $$f_X$$ is the density function of $$X$$ and on the right side we have the density function of the Gamma distribution with $$k = 2$$.
