@@ -23,8 +23,7 @@ $$
 1 - e^{-x} = P(X \leq x/\lambda) = P(\lambda X \leq x).
 $$
 
-From which it follows that $$\lambda X$$ follows a standard exponential distribution, i.e. $$ \lambda X \sim \text{Exp}(1)$$.
-Now often to create a confidence interval we look at what the distribution is of the mean of the data $$\overline{X}$$ or the the sum of the data $$\sum_{i=1}^n X_i$$, as we want our confidence interval to be based on all our observations. Intuitively, we can see that the more samples we have the smaller our confidence interval will be, as the likelihood for all but a few values will become very low.
+From which it follows that $$\lambda X$$ follows a standard exponential distribution, i.e. $$ \lambda X \sim \text{Exp}(1)$$, which is a good start, because for a single data point we have found a pivot already! However, we want want our confidence interval to be based on all our observations. Intuitively, we can see that the more samples we have the smaller our confidence interval will be, as the likelihood for all but a few values will become very low. So we look at the distributions of the mean of the data $$\overline{X}$$ or the the sum of the data $$\sum_{i=1}^n X_i$$. Most of the time one of these will follow some known distribution.
 
 The first confidence interval is the most convenient one as it makes use of the chi-squared distribution, for which cumulative probability tables exist in books and online (although nowadays there exist quantile functions for known distributions in the majority of statistical languages such as R). Note that for an exponential distribution with rate parameter $$\lambda = \frac{1}{2}$$, $$X$$ follows a chi-squared distribution with $$2$$ degrees of freedom. We can see this in the following way:
 
