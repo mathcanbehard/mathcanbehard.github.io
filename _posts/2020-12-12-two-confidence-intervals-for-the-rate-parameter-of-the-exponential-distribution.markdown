@@ -9,30 +9,31 @@ math: true
 
 In this post we show two different exact confidence intervals for the rate parameter $$\lambda$$ of exponentially-distributed random variables. One useful, and one less so.
 First, suppose we have $$X_1, \ldots, X_n \sim \text{Exp}(\lambda)$$, with $$\lambda$$ unknown. Based on our sample, we want to get a confidence interval for $$\lambda$$ of confidence level $$1-\alpha$$.
-To create an exact confidence interval, we need a pivot: a function $$T(X_1, \ldots, X_n, \theta)$$ of the observations and the parameter, whose probability does not depend on $$\theta$$. Rather, this function follows some known distribution from which we can calculate the quantiles. The examples below will show you how such a pivot can lead to a confidence interval.
+To create an exact confidence interval, we need a pivot: a function $$T(X_1, \ldots, X_n, \theta)$$ of the observations and the parameter, whose probability does not depend on $$\theta$$. Rather, this function follows some known distribution from which we can calculate the quantiles. The examples below will show you how finding such a pivot leads to a confidence interval.
 
 We start by looking at the distribution function of the exponential distribution for some $$X \sim \text{Exp}(\lambda)$$:
 
 $$ 
-F(x;\lambda) = 1 - e^{-\lambda x}, \qquad x \geq 0. 
+F_X(x;\lambda) = 1 - e^{-\lambda x}, \qquad x \geq 0. 
 $$
 
 If we are smart we can spot that if we fill in $$x/\lambda$$ instead of $$x$$, we end up with a standard Exponential distribution. This is useful, because it shows us how to transform our samples such that they become standard distributed:
 
 $$
-1 - e^{-x} = P(X \leq x/\lambda) = P(\lambda X \leq x) \quad \Rightarrow \quad \lambda X \sim \text{Exp}(1).
+1 - e^{-x} = P(X \leq x/\lambda) = P(\lambda X \leq x).
 $$
 
-Now often to create a confidence interval we look at what the distribution is of the mean of the data $$\overline{X}$$ of the sum of the data $$\sum_{i=1}^n X_i$$. 
+From which it follows that $$\lambda X$$ follows a standard exponential distribution, i.e. $$ \lambda X \sim \text{Exp}(1)$$.
+Now often to create a confidence interval we look at what the distribution is of the mean of the data $$\overline{X}$$ or the the sum of the data $$\sum_{i=1}^n X_i$$, as we want our confidence interval to be based on all our observations. Intuitively, we can see that the more samples we have the smaller our confidence interval will be, as the likelihood for all but a few values will become very low.
 
-The first confidence interval is the most convenient one as it makes use of the chi-squared distribution, for which cumulative probability tables exist in books and online. Note that if we take $$\lambda = \frac{1}{2}$$ then $$X \sim \chi_2^2$$ which we can see in the following way:
+The first confidence interval is the most convenient one as it makes use of the chi-squared distribution, for which cumulative probability tables exist in books and online (although nowadays there exist quantile functions for known distributions in the majority of statistical languages such as R). Note that for an exponential distribution with rate parameter $$\lambda = \frac{1}{2}$$, $$X$$ follows a chi-squared distribution with $$2$$ degrees of freedom. We can see this in the following way:
 
 $$ 
-f_X(x/2) = \frac{e^{-\frac{x}{2}}}{2} = \frac{x^{\frac{2}{2}-1}e^{-\frac{x}{2}}}{2^{\frac{2}{2}}\Gamma(\frac{2}{2})}
+f_X(x;1/2) = \frac{e^{-\frac{x}{2}}}{2} = \frac{x^{\frac{2}{2}-1}e^{-\frac{x}{2}}}{2^{\frac{2}{2}}\Gamma(\frac{2}{2})}.
 $$
 
 where $$f_X$$ is the density function of $$X$$ and on the right side we have the density function of the Gamma distribution with $$k = 2$$.
-In the same way as above, we note that $$2\lambda X_i \sim \text{Exp}(1/2)$$ for each $$X_i$$. We can also make use of the sum, since the sum of $n$ chi-squared distributions with $k$ degrees of freedom each, is again a chi-squared distribution with $$nk$$ degrees of freedom. This can be seen by writing each chi-squared distribution as the sum of standard normal random variables, and taking the sum. So we end up with 
+In the same way as above, we take $$2\lambda X_i$$ for for each $$X_i$$, since $$2\lambda X_i \sim \text{Exp}(1/2)$$ . We can also make use of the sum, since the sum of $n$ chi-squared distributions with $k$ degrees of freedom each, is again a chi-squared distribution with $$nk$$ degrees of freedom. This can be seen by writing each chi-squared distribution as the sum of standard normal random variables, and taking the sum. So we end up with 
 
 $$
 2\lambda X_1 + \ldots + 2\lambda X_n = 2\lambda \sum_{i=1}^n X_i \sim \chi_{2n}^2.
@@ -59,7 +60,7 @@ $$
 which means $$X_{(1)}$$ is again exponentially distributed with parameter $$n\lambda$$! Again, we can take $$n\lambda X_{(1)}$$, which then follows a standard exponential distribution. Now if we let $$E_{1-\alpha}$$ be the value such that $$P(X \leq E_{\alpha}) = 1-\alpha$$, then we can create the following confidence interval: 
 
 $$
-P(n\lambda X_{(1)} \leq E_{1-\alpha}) = P(\lambda \leq E_{1-\alpha}/(nX_{(1)}) = 1-\alpha.
+P(n\lambda X_{(1)} \leq E_{1-\alpha}) = P(\lambda \leq E_{1-\alpha}/(nX_{(1)})) = 1-\alpha.
 $$
 
 Note that while correct, this confidence interval is way less useful than our first one, which we can see by performing some simulations. We can also start it from some value in $$[0, \alpha]$$ so that we get $$P(E_{\beta}/(nX_{(1)}) \leq \lambda \leq E_{1-\gamma}/(nX_{(1)})) = 1-\alpha$$ as long as $$\beta + \gamma = \alpha$$.
